@@ -49,14 +49,16 @@ for(SpeciesName in focalSpecies){
   ## Run the space v time model, including a predictor for the previous year's abundance, as a yearly deviation 
   # (but this is using the window output from a search where the previous year's abundance predictor was not a yearly deviation (above))
 
-  SpaceTimeModel(SpeciesName, AbundanceMeasure, AR1=TRUE, AR1YearDev=TRUE, Hurdle=Hurdle,
+  SpaceTimeModel(SpeciesName, AR1=TRUE, AR1YearDev=TRUE, Hurdle=Hurdle,
                  CountPercentCurr=CountPercentCurr, CountPercentPrev=CountPercentPrev, 
                  WindowDurations=WindowDurations, WindowStartInterval=WindowStartInterval, 
-                 nitt=nitt, thin=thin, SpAvSubset=1976:1990, WindowAR1Diff=FALSE, exclude="Precip")
+                 nitt=nitt, thin=thin, SpAvSubset=1976:1990, WindowAR1Diff=TRUE, 
+                 AR1Windows=TRUE, AR1YearDevWindows=FALSE, exclude="Precip")
   
-  CompareSpaceTime(SpeciesName, AbundanceMeasure,  AR1=TRUE, AR1YearDev=TRUE, Hurdle=Hurdle,
+  CompareSpaceTime(SpeciesName, AR1=TRUE, AR1YearDev=TRUE, Hurdle=Hurdle,
                    CountPercentCurr=CountPercentCurr, CountPercentPrev=CountPercentPrev, 
                    WindowDurations=WindowDurations, WindowStartInterval=WindowStartInterval,
-                   SpAvSubset=1976:1990, nitt=nitt, WindowAR1Diff=FALSE, exclude="Precip")
+                   SpAvSubset=1976:1990, nitt=nitt, WindowAR1Diff=TRUE, 
+                   AR1Windows=TRUE, AR1YearDevWindows=FALSE, exclude="Precip")
   
 }
